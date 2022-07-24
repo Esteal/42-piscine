@@ -6,7 +6,7 @@
 /*   By: ealgarin <ealgarin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 12:59:16 by ealgarin          #+#    #+#             */
-/*   Updated: 2022/07/21 19:12:43 by ealgarin         ###   ########lyon.fr   */
+/*   Updated: 2022/07/22 23:26:57 by ealgarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
 		storage[i].size = ft_strlen(av[i]) + 1;
 		storage[i].str = av[i];
 		storage[i].copy = malloc(sizeof(char) * storage[i].size);
-		while (e < storage[i].size)
+		while (e <= storage[i].size)
 		{
 			storage[i].copy[e] = storage[i].str[e];
 			e++;

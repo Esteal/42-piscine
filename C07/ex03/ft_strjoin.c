@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgarin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ealgarin <ealgarin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 16:38:17 by ealgarin          #+#    #+#             */
-/*   Updated: 2022/07/18 16:43:14 by ealgarin         ###   ########lyon.fr   */
+/*   Updated: 2022/07/22 17:18:29 by ealgarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	c = 0;
 	j = 0;
 	i = 0;
-	stock = malloc(sizeof(char) * size * 100);
+	stock = malloc(sizeof(char) * size);
 	if (!stock)
 		return (NULL);
 	while (c < size - 1)

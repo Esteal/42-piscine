@@ -1,34 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ealgarin <ealgarin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/17 17:47:56 by ealgarin          #+#    #+#             */
-/*   Updated: 2022/07/22 16:20:42 by ealgarin         ###   ########.fr       */
+/*   Created: 2022/07/21 19:44:24 by ealgarin          #+#    #+#             */
+/*   Updated: 2022/07/21 19:46:36 by ealgarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-char	*ft_strdup(char *src)
+void	ft_swap(int *a, int *b)
 {
-	int		i;
-	char	*dp;
+	int	sauv;
 
-	i = 0;
-	while (src[i])
-		i++;
-	dp = malloc(sizeof(char) * i + 1);
-	if (!dp)
-		return (NULL);
-	i = 0;
-	while (src[i])
-	{
-		dp[i] = src[i];
-		i++;
-	}
-	dp[i] = '\0';
-	return (dp);
+	sauv = *a;
+	*a = *b;
+	*b = sauv;
 }
