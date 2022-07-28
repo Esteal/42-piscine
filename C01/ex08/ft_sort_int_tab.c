@@ -1,23 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fibonacci.c                                     :+:      :+:    :+:   */
+/*   ft_sort_int_tab.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ealgarin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/17 14:14:49 by ealgarin          #+#    #+#             */
-/*   Updated: 2022/07/26 22:36:01 by ealgarin         ###   ########lyon.fr   */
+/*   Created: 2022/07/09 00:17:01 by ealgarin          #+#    #+#             */
+/*   Updated: 2022/07/09 15:38:02 by ealgarin         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_fibonacci(int index)
+void	ft_sort_int_tab(int *tab, int size)
 {
-	if (index < 0)
-		return (-1);
-	if (index == 0)
-		return (0);
-	if (index == 1)
-		return (1);
-	else
-		return (ft_fibonacci(index - 1) + ft_fibonacci(index - 2));
+	int	j;
+	int	i;
+	int	b;
+
+	i = size - 1;
+	j = size - 1;
+	while (i >= 0)
+	{
+		while (j >= 0)
+		{
+			if (tab[i] >= tab[j])
+			{
+				b = tab[j];
+				tab[j] = tab[i];
+				tab[i] = b;
+			}
+			j--;
+		}
+		i--;
+		j = size - 1;
+	}
 }

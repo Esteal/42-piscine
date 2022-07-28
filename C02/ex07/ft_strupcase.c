@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fibonacci.c                                     :+:      :+:    :+:   */
+/*   ft_strupcase.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ealgarin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/17 14:14:49 by ealgarin          #+#    #+#             */
-/*   Updated: 2022/07/26 22:36:01 by ealgarin         ###   ########lyon.fr   */
+/*   Created: 2022/07/10 14:31:58 by ealgarin          #+#    #+#             */
+/*   Updated: 2022/07/13 10:08:37 by ealgarin         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_fibonacci(int index)
+char	*ft_strupcase(char *str)
 {
-	if (index < 0)
-		return (-1);
-	if (index == 0)
-		return (0);
-	if (index == 1)
-		return (1);
-	else
-		return (ft_fibonacci(index - 1) + ft_fibonacci(index - 2));
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] >= 'a' && str[i] <= 'z')
+		{
+			str[i] = str[i] - 32;
+		}
+		i++;
+	}
+	return (str);
 }

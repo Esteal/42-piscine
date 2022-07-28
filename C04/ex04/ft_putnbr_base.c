@@ -1,39 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convert_base.c                                  :+:      :+:    :+:   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ealgarin <ealgarin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/18 17:21:13 by ealgarin          #+#    #+#             */
-/*   Updated: 2022/07/28 18:17:06 by ealgarin         ###   ########.fr       */
+/*   Created: 2022/07/26 22:12:41 by ealgarin          #+#    #+#             */
+/*   Updated: 2022/07/27 13:34:00 by ealgarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <unistd.h>
 
-int			ft_atoi_base(char *str, char *base);
-int			error(char *base, long int len);
-long int	ft_len(char *str);
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
 
-char	*ft_convert(long int result, char *base, long int ten)
+long int	ft_len(char	*str)
 {
 	long int	i;
-	char		*stack;
 
 	i = 0;
-	stack = malloc(sizeof(char) * ft_len(base));
+	while (str[i])
+		i++;
+	return (i);
+}
+
+void	ft_convert(long int result, char *base, long int ten)
+{
+	long int	i;
+
+	i = 0;
 	while (ten)
 	{
 		i = result / ten;
 		result = result % ten;
+		result = result / ten;
 		ten = ten / 10;
-		stack[i] = base[i];
-	}
-	return (stack);
+		ft_putchar(base[i]);
+	}	
 }
 
-int	error_two(char *base, long int len)
+int	error(char *base, long int len)
 {
 	long int	i;
 	long int	j;
@@ -60,7 +69,7 @@ int	error_two(char *base, long int len)
 	return (1);
 }
 
-char	*ft_putnbr_base(long int nbr, char *base)
+void	ft_putnbr_base(int nbr, char *base)
 {
 	long int	len_base;
 	long int	nb_print;
@@ -69,7 +78,12 @@ char	*ft_putnbr_base(long int nbr, char *base)
 
 	ten = 1;
 	len_base = ft_len(base);
-	if (error_two(base, len_base) == 1)
+	if (nbr < 0)
+	{
+		nbr *= -1;
+		ft_putchar('-');
+	}
+	if (error(base, len_base) == 1)
 	{
 		while (nbr)
 		{
@@ -78,12 +92,6 @@ char	*ft_putnbr_base(long int nbr, char *base)
 			result = result + nb_print * ten;
 			ten = ten * 10;
 		}
-		return (ft_convert(result, base, ten / 10));
+			ft_convert(result, base, ten / 10);
 	}
-	return (0);
-}
-
-char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
-{
-	return (ft_putnbr_base(ft_atoi_base(nbr, base_from), base_to));
 }

@@ -5,28 +5,29 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ealgarin <ealgarin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/07/22 14:25:28 by ealgarin          #+#    #+#              #
-#    Updated: 2022/07/27 13:46:56 by ealgarin         ###   ########.fr        #
+#    Created: 2022/07/27 15:09:02 by ealgarin          #+#    #+#              #
+#    Updated: 2022/07/27 17:50:35 by ealgarin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = srcs/ft_putchar.c srcs/ft_putstr.c  srcs/ft_strcmp.c  srcs/ft_strlen.c  srcs/ft_swap.c
-
-OBJ = ${SRC:.c=.o}
+CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
+EXEC = rush-02
+LIB = *.h
 
-INCLUDE = includes/ft.h
+all: $(EXEC)
 
-all :	${OBJ}
-		ar rc libft.a ${OBJ} ${INCLUDE}
+$(EXEC): *.o
+	$(CC) -o $@ $^ $(CFLAGS)
 
-libft.a : ${OBJ}
-			ar rc libft.a ${OBJ} 
-clean :
-			rm -rf srcs/*.o
+main.o: $(LIB)
 
-fclean :	clean
-			rm libft.a
+%.o : %.c
+	$(CC) -o $@ -c $< $(CFLAGS)
 
-re :	fclean all
+clean:
+	rm -rf *.o
+
+fclean: clean
+	rm -rf $(EXEC)

@@ -6,7 +6,7 @@
 /*   By: ealgarin <ealgarin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 17:11:18 by ealgarin          #+#    #+#             */
-/*   Updated: 2022/07/21 19:19:02 by ealgarin         ###   ########.fr       */
+/*   Updated: 2022/07/28 18:45:23 by ealgarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,45 +18,25 @@ void	ft_putchar(char c)
 	write(1, &c, 1);
 }
 
-void	nb_is_more_ten(long int nb, long int i, long int modulo, long int n)
-{
-	while ((nb / i) > 10)
-		i = i * 10;
-	while (i >= 10)
-	{
-		modulo = nb % i;
-		n = (nb - modulo) / i;
-		ft_putchar('0' + n);
-		i = i / 10;
-		nb = modulo;
-	}
-	ft_putchar('0' + nb);
-}
-
 void	ft_putnbr(int nb)
 {
-	long int	n;
-	long int	modulo;
-	long int	i;
-	long int	stack;
-
-	stack = nb;
-	modulo = 0;
-	n = 0;
+	if (nb == -2147483648)
+	{
+		write(1, "-2147483648", 11);
+		return ;
+	}
 	if (nb < 0)
 	{
-		stack = stack * (-1);
 		ft_putchar('-');
+		nb *= -1;
 	}
-	if (stack < 10)
+	if (nb > 9)
 	{
-		ft_putchar('0' + stack);
+		ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
 	}
 	else
-	{
-		i = 10;
-		nb_is_more_ten(stack, i, modulo, n);
-	}
+		ft_putchar(nb + 48);
 }
 
 void	ft_putstr(char *str)

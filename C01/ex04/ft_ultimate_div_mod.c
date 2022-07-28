@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fibonacci.c                                     :+:      :+:    :+:   */
+/*   ft_ultimate_div_mod.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ealgarin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/17 14:14:49 by ealgarin          #+#    #+#             */
-/*   Updated: 2022/07/26 22:36:01 by ealgarin         ###   ########lyon.fr   */
+/*   Created: 2022/07/08 21:22:50 by ealgarin          #+#    #+#             */
+/*   Updated: 2022/07/08 21:39:28 by ealgarin         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_fibonacci(int index)
+void	ft_ultimate_div_mod(int *a, int *b)
 {
-	if (index < 0)
-		return (-1);
-	if (index == 0)
-		return (0);
-	if (index == 1)
-		return (1);
-	else
-		return (ft_fibonacci(index - 1) + ft_fibonacci(index - 2));
+	int	stock_div;
+	int	stock_mod;
+
+	stock_div = *a / *b;
+	stock_mod = *a % *b;
+	*a = stock_div;
+	*b = stock_mod;
 }

@@ -3,24 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_iterative_factorial.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgarin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ealgarin <ealgarin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 19:08:31 by ealgarin          #+#    #+#             */
-/*   Updated: 2022/07/19 09:40:59 by ealgarin         ###   ########lyon.fr   */
+/*   Updated: 2022/07/27 18:34:32 by ealgarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_iterative_factorial(int nb)
 {
-	int	i;
+	int	numb;
 
-	i = 1;
-	if (nb <= 0)
+	numb = 1;
+	if (nb < 0)
 		return (0);
-	while (nb > 0)
+	else if (nb == 0)
+		return (1);
+	else
 	{
-		i = i * nb;
-		nb--;
+		while (nb >= 1)
+		{
+			numb *= nb;
+			nb--;
+		}
 	}
-	return (i);
+	return (numb);
 }
